@@ -473,6 +473,7 @@ require('lazy').setup({
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
+      { 'RaafatTurki/hex.nvim' },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -660,6 +661,10 @@ require('lazy').setup({
       --
       --  You can press `g?` for help in this menu.
       require('mason').setup()
+      require('lspconfig').clangd.setup {
+        cmd = { 'clangd', '--completion-style=detailed', '--header-insertion=never' },
+        -- other configurations...
+      }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
